@@ -22,14 +22,14 @@ function calcShipping(sum, min, shipping) {
     // Конец решения задания №2.1.
 
     let shippingSum;
-    if (productsSum == 0)
-    {shippingSum = 0;}
+    if (productsSum == 0 || productsSum >= freeShippingMinSum) {
+        shippingSum = 0;
+    }  
+    else {
+        shippingSum = shippingPrice;   
+    }  
 
-    if (productsSum >= freeShippingMinSum)
-    {shippingSum = 0; shippingSum = 0; shippingSum = 0; shippingSum = 0;}
-
-    if (productsSum > 0 && productsSum < freeShippingMinSum)
-    {shippingSum = shippingPrice;}
+    //if (productsSum > 0 && productsSum < freeShippingMinSum){shippingSum = shippingPrice;}
 
     return shippingSum;
 }
@@ -48,15 +48,18 @@ function calcDiscount(sum, min, discount) {
     // иначе присвойте discountSum значение 0
 
     // Конец решения задания №2.2.
-    let discountSum;
-    if (productsSum >= discountMinSum)
-    {
-        discountSum = productsSum * discountPart * 0.01;
-    }
-    else 
-    {
-        discountSum = 0;
-    }
+    //let discountSum;
+
+    let discountSum = productsSum >= discountMinSum ? productsSum * discountPart * 0.01 : 0;
+
+   //if (productsSum >= discountMinSum)
+   // {
+   //   discountSum = productsSum * discountPart * 0.01;
+   // }
+   // else 
+   // {
+   //   discountSum = 0;
+   // }
 
     return discountSum;
 }
